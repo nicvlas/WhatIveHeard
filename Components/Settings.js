@@ -1,34 +1,25 @@
 // Components/Settings.js
 
 import React from 'react'
-import { StyleSheet, Text, View, TextInput, Button, FlatList, TouchableOpacity, AsyncStorage } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, AsyncStorage } from 'react-native'
 import { connect } from 'react-redux'
+import {Button} from 'react-native-elements'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 class Settings extends React.Component {
-
-    clearAll = async () => {
-        try {
-            await AsyncStorage.clear()
-        } catch(e) {
-            // clear error
-        }
-        
-        console.log('Done.')
-    }
 
     render() {
         return(
             <View style={styles.main_container}>
-                <View style={styles.wrap}>
-                    <TouchableOpacity onPress={() => this.clearAll()}>
-                        <Button title="Je souhaite supprimer mes données"></Button>
-                    </TouchableOpacity>
-                </View>
+              <View style={styles.btn}>
+                <TouchableOpacity>
+                  <Button title="Je souhaite supprimer mes données" onPress={() => AsyncStorage.clear()} type="outline"></Button>
+                </TouchableOpacity>
+              </View>
                 <View style={styles.wrap}>
                     <Text style={styles.textinput}>© Copyright Nicolas Vite</Text>
                 </View>
             </View>
-        
         )
     }
 }
@@ -40,6 +31,9 @@ const styles = StyleSheet.create({
   },
   wrap: {
       flex: 1,
+  },
+  btn: {
+    marginTop: 150,
   },
   textinput: {
     position: "absolute",

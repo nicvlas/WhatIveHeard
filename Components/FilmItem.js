@@ -29,6 +29,7 @@ class FilmItem extends React.Component {
       var pochetteSD = albums.artworkUrl100
       var pochetteHD = pochetteSD.replace('100x100bb', '600x600bb')
 
+
       //console.log(pochetteHD)
       return (
         <TouchableOpacity
@@ -42,7 +43,7 @@ class FilmItem extends React.Component {
           <View style={styles.content_container}>
             <View style={styles.header_container}>
             {this._displayFavoriteImage()}
-              <Text style={styles.title_text}>{albums.collectionName}</Text>
+              <Text style={styles.title_text}> {albums.collectionName} </Text>
             </View>
             <View style={styles.description_container}>
               <Text numberOfLines={6}>{albums.artistName}</Text>

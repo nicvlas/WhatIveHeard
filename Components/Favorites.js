@@ -46,20 +46,30 @@ class Favorites extends React.Component {
    */
   renderArtwork() {
     this.componentDidMount()
-    return this.state.listened.map((url) => (
-      <>
-      <Image
-        style={{
-          width: 160,
-          height: 160,
-        }}
-        source={{
-          uri: url = url.replace('100x100bb', '600x600bb'),
-        }}
-      />
-      <Text>{}</Text>
-      </>
-    ));
+    if(AsyncStorage.getAllKeys() != false)
+    {
+      return this.state.listened.map((url) => (
+        <>
+        <Image
+          style={{
+            width: 160,
+            height: 160,
+          }}
+          source={{
+            uri: url = url.replace('100x100bb', '600x600bb'),
+          }}
+        />
+        <Text>{}</Text>
+        </>
+      ));
+    }
+    else{
+      return(
+        <>
+        <Text>{'Aucun album écouté'}</Text>
+        </>
+      );
+    }
   }
   
   render() {
